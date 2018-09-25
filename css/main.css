@@ -1,0 +1,11 @@
+.cat-image-wrapper {
+    text-align: center;
+}
+
+.cat-image {
+    cursor: pointer;
+}
+
+.click-count {
+    font-weight: 600;
+}
