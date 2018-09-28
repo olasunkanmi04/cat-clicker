@@ -1,11 +1,27 @@
-.cat-image-wrapper {
-    text-align: center;
+body {
+    display: flex;
+    padding: 0 180px;
 }
 
-.cat-image {
+.image-wrapper {
+    width: 300px;
+    height: 300px;
+}
+
+.cat-names p {
     cursor: pointer;
 }
 
-.click-count {
+.individual-cat-images {
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+}
+
+.cat-details {
+    margin-left: auto;
+}
+
+.individual-cat-count {
     font-weight: 600;
 }
