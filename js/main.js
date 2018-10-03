@@ -1,29 +1,3 @@
-// const cat = document.querySelectorAll('.cat-image');
-// let count = 0;
-
-// cat.forEach((e) => {
-//     e.addEventListener('click', () => {
-//         count += 1;
-//         document.querySelector('.count').innerHTML = count;
-//     });
-// })
-
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     var imageOneWrapper = document.querySelector('.image-one-wrapper');
-//     var imageTwoWrapper = document.querySelector('.image-two-wrapper');
-//     var catNameOne = document.createElement('p');
-//     var catNameTwo = document.createElement('p');
-
-//     catNameOne.innerHTML = 'Cat One';
-//     catNameTwo.innerHTML = 'Cat two';
-
-//     imageOneWrapper.prepend(catNameOne);
-//     imageTwoWrapper.prepend(catNameTwo);
-
-// });
-
-
 var model = {
     currentCat: null,
     properties: [{
@@ -57,6 +31,7 @@ var octopus = {
         // tells the views to initialize
         catListView.init();
         catView.init();
+        adminView.init();
     },
     getCurrentCat: function () {
         return model.currentCat;
@@ -67,12 +42,23 @@ var octopus = {
     // set the currently selected cat to the object passedin
     setCurrentCat: function (property) {
         model.currentCat = property;
+        catView.render();
+        adminView.render();
     },
 
     // increments the counter for the currently selected cat
     incrementCounter: function () {
         model.currentCat.count++;
         catView.render();
+        adminView.render();
+    },
+    updateModel: function (newName, newImage, newCount) {
+        model.currentCat.name = newName;
+        model.currentCat.images = newImage;
+        model.currentCat.count = newCount;
+        adminView.render();
+        catView.render();
+        catListView.render();
     }
 };
 
@@ -124,7 +110,7 @@ var catListView = {
             para.addEventListener('click', ((propertyCopy) => {
                 return function () {
                     octopus.setCurrentCat(propertyCopy);
-                    catView.render();
+
                 };
             })(property));
 
@@ -133,34 +119,33 @@ var catListView = {
     }
 };
 
+// Admin view
+let adminView = {
+    init: function () {
+        this.newName = document.querySelector('.new-name');
+        this.newImage = document.querySelector('.new-image');
+        this.newCount = document.querySelector('.new-count');
+        this.adminBtn = document.querySelector('.admin-btn');
+        this.cancelUpdate = document.querySelector('.cancel-update');
+        this.saveUpdate = document.querySelector('.save-update');
+        this.adminForm = document.querySelector('.admin-form');
+
+        this.render();
+    },
+    render: function () {
+        var currentCat = octopus.getCurrentCat();
+        this.newName.value = currentCat.name;
+        this.newImage.value = currentCat.images;
+        this.newCount.value = currentCat.count;
+
+        var newImage = this.newImage;
+        var newName = this.newName;
+        var newCount = this.newCount;
+
+        this.saveUpdate.addEventListener('click', function () {
+            octopus.updateModel(newName.value, newImage.value, newCount.value);
+        });
+    }
+}
+
 octopus.init();
-
-
-// properties.forEach((property) => {
-//     let para = document.createElement('p');
-//     para.innerHTML = property.name;
-//     catNamesWrapper.appendChild(para);
-
-//     para.addEventListener('click', ((propertyCopy) => {
-//         return () => {
-//             let catName = document.querySelector('.individual-cat-name');
-//             let catImage = document.querySelector('.individual-cat-images');
-//             let catClickCount = document.querySelector('.individual-cat-count');
-
-//             catName.textContent = propertyCopy.name;
-//             catImage.src = propertyCopy.images;
-//             catClickCount.textContent = propertyCopy.count;
-
-//             catImage.addEventListener('click', () => {
-
-//                 propertyCopy.count++;
-//                 catClickCount.textContent = propertyCopy.count;
-//             })
-//         }
-//     })(property));
-// })
-// names.forEach(() => {
-
-//     let catNames = document.querySelector('.cat-names');
-
-// })

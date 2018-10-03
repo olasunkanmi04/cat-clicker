@@ -1,6 +1,9 @@
 body {
-    display: flex;
     padding: 0 180px;
+}
+
+.wrapper {
+    display: flex;
 }
 
 .image-wrapper {
@@ -24,4 +27,8 @@ body {
 
 .individual-cat-count {
     font-weight: 600;
+}
+
+.admin-area button {
+    margin-bottom: 30px;
 }

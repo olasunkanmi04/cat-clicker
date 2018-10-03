@@ -10,15 +10,37 @@
 </head>
 
 <body>
-    <div class="cat-names">
+    <div class="wrapper">
+        <div class="cat-names">
 
+        </div>
+
+        <div class="cat-details">
+            <p class="individual-cat-name"></p>
+            <div class="image-wrapper">
+                <img src="" alt="" class="individual-cat-images"></div>
+            <p class="individual-cat-count"></p>
+        </div>
     </div>
+    <div class="admin-area">
+        <button class="admin-btn">Admin</button>
 
-    <div class="cat-details">
-        <p class="individual-cat-name"></p>
-        <div class="image-wrapper">
-            <img src="" alt="" class="individual-cat-images"></div>
-        <p class="individual-cat-count"></p>
+        <form action="" class="admin-form">
+            <label for="Name">Name:</label>
+            <input type="text" class="new-name">
+            <br>
+            <br>
+            <label for="Image">ImageSrc:</label>
+            <input type="text" class="new-image">
+            <br>
+            <br>
+            <label for="Count">Click Count</label>
+            <input type="text" class="new-count">
+            <br>
+            <br>
+            <button class="cancel-update">Cancel</button>
+            <button class="save-update" type="button">Save</button>
+        </form>
     </div>
 
 
