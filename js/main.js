@@ -45,7 +45,6 @@ var octopus = {
         catView.render();
         adminView.render();
     },
-
     // increments the counter for the currently selected cat
     incrementCounter: function () {
         model.currentCat.count++;
@@ -137,13 +136,18 @@ let adminView = {
         this.newName.value = currentCat.name;
         this.newImage.value = currentCat.images;
         this.newCount.value = currentCat.count;
+        this.adminForm.style.display = 'none';
 
         var newImage = this.newImage;
         var newName = this.newName;
         var newCount = this.newCount;
-
+        var adminForm = this.adminForm;
         this.saveUpdate.addEventListener('click', function () {
             octopus.updateModel(newName.value, newImage.value, newCount.value);
+        });
+
+        this.adminBtn.addEventListener('click', function () {
+            adminForm.style.display = 'block';
         });
     }
 }
